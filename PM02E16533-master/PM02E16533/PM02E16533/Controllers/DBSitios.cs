@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace PM02E16533.Controllers
 {
-    public class DataBase
+    public class DBSitios
     {
         readonly SQLiteAsyncConnection dbase;
 
-        public DataBase(string dbpath)
+        public DBSitios(string dbpath)
         {
             dbase = new SQLiteAsyncConnection(dbpath);
 
             /*Se crean las tablas*/
-            dbase.CreateTableAsync<sitios>();
+            dbase.CreateTableAsync<Tabla>();
 
         }
 
-        public Task<int> SitioSave(sitios sitio)
+        public Task<int> SitioSave(Tabla sitio)
         {
             if (sitio.id != 0)//update del registro
             {
@@ -32,19 +32,19 @@ namespace PM02E16533.Controllers
             }
         }
 
-        public Task<List<sitios>> getListSitio()
+        public Task<List<Tabla>> getListSitio()
         {
-            return dbase.Table<sitios>().ToListAsync();//se convierte el resultado a una lista.
+            return dbase.Table<Tabla>().ToListAsync();//se convierte el resultado a una lista.
         }
 
-        public async Task<sitios> getSitio(int pid)
+        public async Task<Tabla> getSitio(int pid)
         {
-            return await dbase.Table<sitios>()//se usa explesion lamba
+            return await dbase.Table<Tabla>()//se usa explesion lamba
                 .Where(i => i.id == pid)
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<int> DeleteSitio(sitios sitio)
+        public async Task<int> DeleteSitio(Tabla sitio)
         {
             return await dbase.DeleteAsync(sitio);
         }

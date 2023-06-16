@@ -31,7 +31,7 @@ namespace PM02E16533.Views
 
         private async void ListSitio_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var sitio = (sitios)e.Item;
+            var sitio = (Tabla)e.Item;
 
 
             bool answer = await DisplayAlert("Atencion", "¿Quiere dirigirse al mapa?", "Si", "No");
@@ -59,7 +59,7 @@ namespace PM02E16533.Views
             Debug.WriteLine("Answer: " + answer);
             if (answer == true)
             {
-                var idSitio = (sitios)(sender as MenuItem).CommandParameter;
+                var idSitio = (Tabla)(sender as MenuItem).CommandParameter;
                 var result = await App.DBase.DeleteSitio(idSitio);
 
                 if (result == 1)
@@ -76,7 +76,7 @@ namespace PM02E16533.Views
 
         private async void IrMapa_Clicked(object sender, EventArgs e)
         {
-            var idSitio = (sitios)(sender as MenuItem).CommandParameter;
+            var idSitio = (Tabla)(sender as MenuItem).CommandParameter;
             //await DisplayAlert("Aviso", "sitio " + idSitio, "ok");
 
             bool answer = await DisplayAlert("AVISO", "¿Quiere dirigirse al mapa?", "Si", "No");

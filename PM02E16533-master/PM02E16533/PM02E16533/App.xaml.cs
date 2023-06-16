@@ -9,9 +9,9 @@ namespace PM02E16533
     public partial class App : Application
     {
 
-        static DataBase db;
+        static DBSitios db;
 
-        public static DataBase DBase
+        public static DBSitios DBase
         {
             get
             {
@@ -19,7 +19,7 @@ namespace PM02E16533
                 if (db == null)
                 {
                     String FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "EmpleDB.db3");//db3 es extencion de sqlite
-                    db = new DataBase(FolderPath);
+                    db = new DBSitios(FolderPath);
                 }
 
                 return db;

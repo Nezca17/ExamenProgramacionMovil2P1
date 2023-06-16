@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PM02E16533.Models
 {
-    public class sitios
+    public class Tabla
     {
         [PrimaryKey, AutoIncrement]
         public int id { get; set; }

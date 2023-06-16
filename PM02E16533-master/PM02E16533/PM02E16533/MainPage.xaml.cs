@@ -23,7 +23,7 @@ namespace PM02E16533
         }
 
 
-        public async void LoadCoord()
+        public async void CargarCoord()
         {
             try
             {
@@ -43,21 +43,21 @@ namespace PM02E16533
             }
             catch (FeatureNotSupportedException fnsEx)
             {
-                await DisplayAlert("Atencion", "Este dispositivo no soporta GPS" + fnsEx, "Ok");
+                await DisplayAlert("Alerta", "GPS no soportado" + fnsEx, "Ok");
             }
             catch (FeatureNotEnabledException fneEx)
             {
-                await DisplayAlert("Atencion", "Error de Dispositivo, favor validar si su GPS esta activo", "Ok");
+                await DisplayAlert("Alerta", "Error de Dispositivo, verificar que este activo el GPS", "Ok");
                 Process.GetCurrentProcess().Kill();
 
             }
             catch (PermissionException pEx)
             {
-                await DisplayAlert("Atencion", "Sin Permisos de Geolocalizacion" + pEx, "Ok");
+                await DisplayAlert("Alerta", "no hay Permisos de GPS" + pEx, "Ok");
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Atencion", "Sin Ubicacion " + ex, "Ok");
+                await DisplayAlert("Alerta", "Sin Ubicacion " + ex, "Ok");
             }
         }
 
@@ -82,23 +82,23 @@ namespace PM02E16533
         {
             if (Filefoto == null)
             {
-                await DisplayAlert("Atencion", "Debe tomar una foto", "OK");
+                await DisplayAlert("Alerta", "Tomar una Foto es Requerido", "OK");
             }
             else if (string.IsNullOrEmpty(txtDescripcion.Text))
             {
-                await DisplayAlert("Atencion", "El campo descripcion es obligatorio.", "OK");
+                await DisplayAlert("Alerta", "El campo descripcion es obligatorio.", "OK");
 
             }
             else if (string.IsNullOrEmpty(txtLat.Text) && string.IsNullOrEmpty(txtLon.Text))
             {
-                await DisplayAlert("Atencion", "No fue posible agregar registro. Faltan coordenadas.", "OK");
+                await DisplayAlert("Alerta", "No fue posible agregar registro. Faltan coordenadas.", "OK");
 
-                LoadCoord();
+                CargarCoord();
 
             }
             else
             {
-                var sitio = new Models.sitios
+                var sitio = new Models.Tabla
                 {
                     id = 0,
                     latitud = txtLat.Text,
@@ -153,7 +153,7 @@ namespace PM02E16533
         {
             base.OnAppearing();
 
-            LoadCoord();
+            CargarCoord();
             try
             {
                 var georequest = new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(10));
@@ -181,7 +181,7 @@ namespace PM02E16533
             }
             catch (PermissionException pEx)
             {
-                await DisplayAlert("Atencion", "Sin Permisos de Geolocalizacion" + pEx, "Ok");
+                await DisplayAlert("Atencion", "Sin Permisos de GPS" + pEx, "Ok");
             }
             catch (Exception ex)
             {
@@ -191,7 +191,7 @@ namespace PM02E16533
 
         private async void btnSalir_Clicked(object sender, EventArgs e)
         {
-            bool answer = await DisplayAlert("Confirmacion", "¿Quiere cerrar la aplicacion?", "Si", "No");
+            bool answer = await DisplayAlert("Salir", "¿Deseas Salir?", "Si", "No");
             Debug.WriteLine("Answer: " + answer);
             if (answer == true)
             {

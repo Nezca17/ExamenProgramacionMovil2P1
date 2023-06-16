@@ -8,19 +8,17 @@
             <Label Text="Examen PM02E16533" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
         </Frame>
 
-        <!--FOTO-->
+       
         <Image x:Name="fotoSitio" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="usuario.png"   Margin="5,0,5,5"/>
-        <Button Text="Tomar Foto" x:Name="btnFoto" Clicked="btnFoto_Clicked" CornerRadius="25" Background="DarkBlue" TextColor="White" Margin="5"/>
-        <!--DATOS-->
+        <Button Text="Capturar Lugar" x:Name="btnFoto" Clicked="btnFoto_Clicked" CornerRadius="0" Background="DarkBlue" TextColor="White" Margin="5"/>
         <Label Text="Latitud"/>
         <Entry x:Name="txtLat" IsReadOnly="true" TextTransform="None"/>
         <Label Text="Longitud"/>
         <Entry x:Name="txtLon" IsReadOnly="true" TextTransform="None"/>
         <Label Text="Descripcion"/>
         <Entry x:Name="txtDescripcion"/>
-        <!--BONOTES-->
         <AbsoluteLayout>
-            <Button Text="Agregar" x:Name="btnAdd" Clicked="btnAdd_Clicked" Background="blue" TextColor="White" Margin="50, 20, 50, 50" CornerRadius="0" Padding="20"/>
+            <Button Text="Agregar" x:Name="btnAdd" Clicked="btnAdd_Clicked" Background="orange" TextColor="White" Margin="50, 20, 50, 50" CornerRadius="0" Padding="20"/>
             <Button Text="Listar Sitios" x:Name="btnList" Clicked="btnList_Clicked" Background="Gray" TextColor="White" Margin="170, 20, 0, 50" CornerRadius="0" Padding="20"/>
             <Button Text="Salir" x:Name="btnSalir" Clicked="btnSalir_Clicked" Background="red" TextColor="White" Margin="320, 20, 30, 40" CornerRadius="0" Padding="20"/>
         </AbsoluteLayout>
